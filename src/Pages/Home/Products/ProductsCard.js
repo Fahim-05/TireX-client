@@ -11,15 +11,15 @@ const ProductsCard = ({ product }) => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title uppercase text-2xl text-orange-600 font-bold">{bikeName}</h2>
                 <div className='grid lg:grid-cols-2 grid-cols-1 gap-16 border border-orange-600 my-10'>
-                    <div className='text-left text-xl'>
+                    <div className='text-left text-lg'>
                         <p className=''><span className='font-semibold'>Category:</span> {categoryName}</p>
                         <p className=''><span className='font-semibold'>Location:</span> {location}</p>
                         <p className=''><span className='font-semibold'>Seller:</span> {sellerName}</p>
                     </div>
-                    <div className='text-left text-xl'>
-                        <p className=''>Used: {yearOfUse}<sup>yrs</sup></p>
-                        <p className=''>Original Price: ${originalPrice}</p>
-                        <p >Resale Price: ${resalePrice}</p>
+                    <div className='text-left text-lg'>
+                        <p><span className='font-semibold'>Used:</span> {yearOfUse}<sup>yrs</sup></p>
+                        <p className='text-orange-600 font-bold'>Original Price ${originalPrice}</p>
+                        <p className='text-green-600 font-bold'>Resale Price: ${resalePrice}</p>
                     </div>
                 </div>
                 <div className="card-actions">
