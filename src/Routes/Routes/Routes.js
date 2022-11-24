@@ -3,6 +3,7 @@ import Main from "../../Layouts/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 
 export const router = createBrowserRouter([
     {
@@ -22,5 +23,9 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <NotFoundPage></NotFoundPage>
     }
 ]);
