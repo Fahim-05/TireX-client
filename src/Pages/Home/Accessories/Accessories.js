@@ -3,7 +3,7 @@ import React from 'react';
 const Accessories = () => {
     return (
         <div className='my-20 bg-slate-700 p-10'>
-            <p className='text-orange-500 font-bold text-5xl mb-10'>ACCESSORIES <hr className='border-2 border-green-500 mt-2'></hr></p>
+            <h1 className='text-orange-500 font-bold text-5xl mb-10'>ACCESSORIES <hr className='border-2 border-green-500 mt-2'></hr></h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-6'>
                 <div>
                     <div className='bg-black flex flex-col items-center py-4'>
