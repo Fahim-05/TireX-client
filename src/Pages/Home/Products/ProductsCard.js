@@ -10,16 +10,16 @@ const ProductsCard = ({ product }) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title uppercase text-2xl text-orange-600 font-bold">{bikeName}</h2>
-                <div className='grid lg:grid-cols-2 grid-cols-1 gap-16 border border-orange-600 my-10'>
+                <div className='grid lg:grid-cols-2 grid-cols-1 gap-10 my-10'>
                     <div className='text-left text-lg'>
                         <p className=''><span className='font-semibold'>Category:</span> {categoryName}</p>
                         <p className=''><span className='font-semibold'>Location:</span> {location}</p>
-                        <p className=''><span className='font-semibold'>Seller:</span> {sellerName}</p>
+                        <p className=''><span className='font-semibold'>Seller:</span> <span className='text-teal-600 font-semibold'>{sellerName}</span></p>
                     </div>
                     <div className='text-left text-lg'>
-                        <p><span className='font-semibold'>Used:</span> {yearOfUse}<sup>yrs</sup></p>
-                        <p className='text-orange-600 font-bold'>Original Price ${originalPrice}</p>
-                        <p className='text-green-600 font-bold'>Resale Price: ${resalePrice}</p>
+                        <p><span className='font-semibold'>Used:</span> <span className='text-blue-600 font-semibold'>{yearOfUse}<sup>yrs</sup></span></p>
+                        <p><span className='font-semibold'>Original Price:</span> <strike className='text-red-600 font-bold'>${originalPrice}</strike></p>
+                        <p><span className='font-semibold'>Resale Price:</span> <span className='text-green-600 font-bold'>${resalePrice}</span></p>
                     </div>
                 </div>
                 <div className="card-actions">
