@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleProviderLogin } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const [loginError, setLoginError] = useState('');
 
@@ -27,14 +28,26 @@ const Login = () => {
             });
     }
 
+    //google login
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = (g) => {
+        googleProviderLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error.message));
+    }
+
     return (
         <div className='h-[800px] flex justify-center items-center '>
             <div className='w-96 p-6 border border-gray-200 rounded-lg shadow-lg'>
                 <h1 className='text-3xl text-orange-600 uppercase font-bold text-center my-4'>Login</h1>
                 <>
-                {
-                  loginError && <p className='text-red-600'>{loginError}</p>  
-                }
+                    {
+                        loginError && <p className='text-red-600'>{loginError}</p>
+                    }
                 </>
 
                 <form onSubmit={handleSubmit(handleLogin)}>
@@ -63,7 +76,7 @@ const Login = () => {
                 </form>
                 <p className='my-2 text-center'>New to TireX? <Link to='/register' className='text-blue-600 underline'>create an account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline bg-green-500 hover:bg-blue-500 w-full text-xl'>Login With Google</button>
+                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-500 hover:bg-blue-500 w-full text-xl'>Login With Google</button>
             </div>
         </div>
     );

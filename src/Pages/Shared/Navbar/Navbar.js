@@ -19,7 +19,17 @@ const Navbar = () => {
         <li><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ?
-                <li><button onClick={handleLogOut}>Logout</button></li>
+                <>
+                    <li><button onClick={handleLogOut}>Logout</button></li>
+                    <div className='ml-10'>
+                        <div className="avatar">
+                            <div className="w-10 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
+                                <img src={user?.photoURL} alt='' />
+                            </div>
+                            <p className='ml-4 mt-2'>{user?.email}</p>
+                        </div>
+                    </div>
+                </>
                 :
                 <>
                     <li><Link to='/login'>Login</Link></li>
