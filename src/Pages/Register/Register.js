@@ -14,7 +14,6 @@ const Register = () => {
 
         console.log(data);
 
-
         // call createUser
         createUser(data.email, data.password)
             .then(result => {
@@ -26,14 +25,33 @@ const Register = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
-                        toast.success('Account created Successfully');
+                        saveUser(data.name, data.email, data.userType);
+                        
                     })
                     .catch(error => console.error(error))
 
 
             })
             .catch(error => console.error(error));
+    }
+
+
+    const saveUser = (name, email, userType) => {
+        const user = { name, email, userType };
+        console.log(user);
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('save user',data);
+                toast.success('Account created Successfully');
+                navigate('/');
+            })
     }
 
 

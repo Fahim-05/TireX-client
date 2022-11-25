@@ -24,7 +24,6 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                from.reset();
                 toast.success('Login Successfully');
                 navigate(from, { replace: true });
             })
@@ -38,7 +37,7 @@ const Login = () => {
     //google login
     const googleProvider = new GoogleAuthProvider();
 
-    const handleGoogleLogin = (g) => {
+    const handleGoogleLogin = () => {
         googleProviderLogin(googleProvider)
             .then(result => {
                 const user = result.user;

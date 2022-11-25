@@ -11,15 +11,15 @@ const Categories = () => {
             .then(res => res.json())
     });
 
-
+ 
     return (
 
         <div className='my-32'>
             <h1 className='text-orange-500 font-bold text-5xl uppercase text-center mb-10'>Product Categories <hr className='my-2'></hr></h1>
 
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-20'>
-                {categories.length &&
-                    categories.map((category, index) =>
+                {
+                    categories?.map((category, index) =>
                         <Link
                             to={`/category/${category.categoryId}`}
                             key={category.categoryId}

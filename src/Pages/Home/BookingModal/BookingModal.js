@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 const BookingModal = ({ bike, setBike }) => {
 
     const { user } = useContext(AuthContext);
-    const { bikeName, resalePrice } = bike;
+    const { bikeName, resalePrice, image } = bike;
 
     const handleBooking = event => {
         event.preventDefault();
@@ -26,14 +26,31 @@ const BookingModal = ({ bike, setBike }) => {
             phoneNumber,
             meetingLocation,
             bookingDate: date,
+            image,
             status: 'booked'
         }
 
 
-        console.log(booking);
-        setBike(null);
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setBike(null);
+                    toast.success('Item is Booked!');
+                }
+                else{
+                    toast.error(data.message);
+                }
+            })
 
-        toast.success('Item is Booked!');
+
 
     }
 
@@ -49,9 +66,9 @@ const BookingModal = ({ bike, setBike }) => {
                         <input type="email" name='userEmail' disabled value={user?.email} className="input input-bordered w-full" />
                         <input type="text" name='bikeName' disabled value={bikeName} className="input input-bordered w-full" />
                         <input type="number" name='resalePrice' disabled value={resalePrice} className="input input-bordered w-full" />
-                        <input type="number" name='phoneNumber' placeholder="phone number" className="input input-bordered w-full" required/>
-                        <input type="text" name='meetingLocation' placeholder="location: examples: Dhaka, Jashore.." className="input input-bordered w-full" required/>
-                        <input type="date" name='date' placeholder="Type here" className="input input-bordered w-full" required/>
+                        <input type="number" name='phoneNumber' placeholder="phone number" className="input input-bordered w-full" required />
+                        <input type="text" name='meetingLocation' placeholder="location: examples: Dhaka, Jashore.." className="input input-bordered w-full" required />
+                        <input type="date" name='date' placeholder="Type here" className="input input-bordered w-full" required />
                         <br />
                         <input className='btn btn-success text-xl text-white w-full' type="submit" value="Submit" />
                     </form>
