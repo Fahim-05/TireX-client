@@ -10,6 +10,7 @@ const Register = () => {
 
     const handleRegister = data => {
 
+        console.log(data);
         // call createUser
         createUser(data.email, data.password)
             .then(result => {
@@ -41,6 +42,12 @@ const Register = () => {
                         <label className="label"><span className="label-text">Password</span></label>
                         <input type="password" className="input input-bordered w-full" {...register("password", { required: true })} />
                     </div>
+
+                    <select {...register("userType", { required: true })} className='border w-full my-6 border-gray-300 p-2 rounded-lg'>
+                        <option value="User" selected>User</option>
+                        <option value="Seller">Seller</option>
+                    </select>
+
 
                     <input className='btn btn-outline btn-success w-full text-xl mt-6' type="submit" value='Register' />
                 </form>
