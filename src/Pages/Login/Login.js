@@ -1,19 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
 
+    const { signIn } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const [loginError, setLoginError] = useState('');
 
     const handleLogin = data => {
+
         console.log(data);
+
+        setLoginError('');
+        // call sign in
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error.message);
+                setLoginError(error.message);
+
+            });
     }
 
     return (
         <div className='h-[800px] flex justify-center items-center '>
             <div className='w-96 p-6 border border-gray-200 rounded-lg shadow-lg'>
                 <h1 className='text-3xl text-orange-600 uppercase font-bold text-center my-4'>Login</h1>
+                <>
+                {
+                  loginError && <p className='text-red-600'>{loginError}</p>  
+                }
+                </>
 
                 <form onSubmit={handleSubmit(handleLogin)}>
 
@@ -33,7 +55,7 @@ const Login = () => {
                             })} />
                     </div>
 
-                    <select {...register("userType", { required: true })} className='border w-full my-6 border-gray-300 p-2 rounded'>
+                    <select {...register("userType", { required: true })} className='border w-full my-6 border-gray-300 p-2 rounded-lg'>
                         <option value="User" selected>User</option>
                         <option value="Seller">Seller</option>
                     </select>

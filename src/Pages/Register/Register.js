@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
 
+    const { createUser } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
 
     const handleRegister = data => {
-        console.log(data);
+
+        // call createUser
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
     }
 
 
@@ -20,7 +29,7 @@ const Register = () => {
 
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text">Name</span></label>
-                        <input type="text" className="input input-bordered w-full" {...register("name")} />
+                        <input type="text" className="input input-bordered w-full" {...register("name", { required: true })} />
                     </div>
 
                     <div className="form-control w-full">
