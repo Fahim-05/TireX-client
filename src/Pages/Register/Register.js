@@ -1,9 +1,42 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+    const { register, handleSubmit } = useForm();
+
+    const handleRegister = data => {
+        console.log(data);
+    }
+
+
     return (
-        <div>
-            <h1>This is register page</h1>
+        <div className='h-[800px] flex justify-center items-center '>
+            <div className='w-96 p-6 border border-gray-200 rounded-lg shadow-lg'>
+                <h1 className='text-3xl text-orange-600 uppercase font-bold text-center my-4'>Sign Up</h1>
+
+                <form onSubmit={handleSubmit(handleRegister)}>
+
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Name</span></label>
+                        <input type="text" className="input input-bordered w-full" {...register("name")} />
+                    </div>
+
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Email</span></label>
+                        <input type="email" className="input input-bordered w-full" {...register("email", { required: true })} />
+                    </div>
+
+                    <div className="form-control w-full">
+                        <label className="label"><span className="label-text">Password</span></label>
+                        <input type="password" className="input input-bordered w-full" {...register("password", { required: true })} />
+                    </div>
+
+                    <input className='btn btn-outline btn-success w-full text-xl mt-6' type="submit" value='Register' />
+                </form>
+                <p className='my-2 text-center'>Already have an account? <Link to='/login' className='text-blue-600 underline'>Login</Link></p>
+            </div>
         </div>
     );
 };
