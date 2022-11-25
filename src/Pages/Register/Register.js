@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
 
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const handleRegister = data => {
 
@@ -25,8 +26,9 @@ const Register = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
+                        navigate('/');
                         toast.success('Account created Successfully');
-                     })
+                    })
                     .catch(error => console.error(error))
 
 

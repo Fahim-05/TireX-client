@@ -21,8 +21,9 @@ const Products = () => {
                 }
             </div>
             { bike &&
-                <BookingModal
+                <BookingModal 
                     bike={bike}
+                    setBike={setBike}
                 ></BookingModal>
             }
         </div>
