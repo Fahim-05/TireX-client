@@ -1,7 +1,6 @@
 import React from 'react';
-import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product, setBike }) => {
     const { categoryName, bikeName, resalePrice, originalPrice, image, location, yearOfUse, sellerName, status } = product;
     return (
         <div className="card bg-base-100 border border-orange-200 shadow-xl hover:shadow-2xl">
@@ -23,7 +22,11 @@ const ProductsCard = ({ product }) => {
                     </div>
                 </div>
                 <div className="card-actions">
-                    <PrimaryButton>Buy Now</PrimaryButton>
+                    <label
+                        htmlFor="booking-modal"
+                        className="btn hover:shadow-2xl text-lg bg-gradient-to-r from-orange-300 to-orange-600 text-white hover:scale-110 duration-200 border-none w-56"
+                        onClick={()=>setBike(product)}
+                        >Book Now</label>
                 </div>
             </div>
         </div>
