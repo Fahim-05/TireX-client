@@ -20,13 +20,14 @@ const Navbar = () => {
         {
             user?.uid ?
                 <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
                     <li><button onClick={handleLogOut}>Logout</button></li>
                     <div className='ml-10'>
                         <div className="avatar">
                             <div className="w-10 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
                                 <img src={user?.photoURL} alt='' />
                             </div>
-                            <p className='ml-4 mt-2'>{user?.email}</p>
+                            <p className='ml-4 mt-2'>{user?.displayName}</p>
                         </div>
                     </div>
                 </>

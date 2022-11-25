@@ -1,21 +1,35 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
 
     const handleRegister = data => {
 
         console.log(data);
+
+
         // call createUser
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        toast.success('Account created Successfully');
+                     })
+                    .catch(error => console.error(error))
+
+
             })
             .catch(error => console.error(error));
     }
@@ -44,7 +58,7 @@ const Register = () => {
                     </div>
 
                     <select {...register("userType", { required: true })} className='border w-full my-6 border-gray-300 p-2 rounded-lg'>
-                        <option value="User" selected>User</option>
+                        <option value="Buyer" selected>Buyer</option>
                         <option value="Seller">Seller</option>
                     </select>
 

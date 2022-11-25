@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
@@ -23,6 +24,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                from.reset();
+                toast.success('Login Successfully');
                 navigate(from, { replace: true });
             })
             .catch(error => {
@@ -40,6 +43,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Login With  Google Successfully');
                 navigate(from, { replace: true });
             })
             .catch(error => console.error(error.message));
@@ -74,7 +78,7 @@ const Login = () => {
                     </div>
 
                     <select {...register("userType", { required: true })} className='border w-full my-6 border-gray-300 p-2 rounded-lg'>
-                        <option value="User" selected>User</option>
+                        <option value="Buyer" selected>Buyer</option>
                         <option value="Seller">Seller</option>
                     </select>
                     <input className='btn btn-outline btn-success w-full text-xl' type="submit" value='Login' />
