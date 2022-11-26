@@ -1,63 +1,64 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../Contexts/AuthProvider';
+import React from 'react';
 
-const MyOrders = () => {
+const AllOrders = () => {
 
-    const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings = [] } = useQuery({
-        queryKey: ['bookings', user?.email],
+    const { data: allbookings = [] } = useQuery({
+        queryKey: ['allbookings'],
         queryFn: async () => {
-            const res = await fetch(url);
+            const res = await fetch('http://localhost:5000/allbookings');
             const data = await res.json();
             return data;
         }
     });
 
+
     return (
         <div>
-            <h1 className='text-xl text-orange-600 font-bold uppercase my-6'>My Orders</h1>
+             <h1 className='text-xl text-orange-600 font-bold uppercase my-6'>My Orders</h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
 
                     <thead>
                         <tr>
                             <th>Serial</th>
+                            <th>Person</th>
                             <th>Image</th>
                             <th>Title</th>
                             <th>Price</th>
                             <th>Payment</th>
                         </tr>
                     </thead>
-                    <tbody> 
+                    <tbody>
 
                         {
-                            bookings.map((booking, index) => <tr key={booking._id}>
+                            allbookings?.map((booking, index) => <tr key={booking._id}>
                                 <td>
                                     {index + 1}.
                                 </td>
                                 <td>
+                                    <p>{booking?.userName}</p>
+                                </td>
+                                <td>
                                     <div className="avatar">
-                                        <div className="mask mask-squircle w-16 h-16">
-                                            <img src={booking.image} alt="Avatar Tailwind CSS Component" />
+                                        <div className="mask mask-circle w-10 h-10">
+                                            <img src={booking?.image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <p>{booking.bikeName}</p>
+                                    <p>{booking?.bikeName}</p>
                                 </td>
-                                <td className='text-green-600'>${booking.resalePrice}</td>
+                                <td className='text-green-600'>${booking?.resalePrice}</td>
                                 <td>
                                     {
-                                        !booking.paid &&
-                                        <Link to={`/dashboard/payment/${booking._id}`}><button className="btn btn-ghost btn-outline btn-xs">Payment</button></Link>
+                                        !booking?.paid &&
+                                        <span className='text-red-500 font-bold'>Unpaid</span>
                                     }
                                     {
-                                        booking.paid && <span className='text-green-500 font-bold'>Paid</span>
+                                        booking?.paid && <span className='text-green-500 font-bold'>Paid</span>
                                     }
                                 </td>
                             </tr>)
@@ -71,4 +72,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default AllOrders;

@@ -80,7 +80,7 @@ const Login = () => {
                         <option value="Buyer" selected>Buyer</option>
                         <option value="Seller">Seller</option>
                     </select> */}
-                    <input className='btn btn-outline btn-success w-full text-xl' type="submit" value='Login' />
+                    <input className='btn btn-outline btn-success w-full text-xl mt-10' type="submit" value='Login' />
                 </form>
                 <p className='my-2 text-center'>New to TireX? <Link to='/register' className='text-blue-600 underline'>create an account</Link></p>
                 <div className="divider">OR</div>

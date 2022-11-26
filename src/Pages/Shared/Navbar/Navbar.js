@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
@@ -27,7 +28,7 @@ const Navbar = () => {
                             <div className="w-10 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
                                 <img src={user?.photoURL} alt='' />
                             </div>
-                            <p className='ml-4 mt-2'>{user?.displayName}</p>
+                            <p className='ml-4 mt-2'>{user?.displayName}</p> 
                         </div>
                     </div>
                 </>
