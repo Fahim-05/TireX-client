@@ -1,10 +1,15 @@
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import CheckoutForm from './CheckoutForm';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
 
     const orders = useLoaderData();
-    const {resalePrice, image, bikeName} = orders;
+    const { resalePrice, image, bikeName } = orders;
 
     return (
         <div>
@@ -18,6 +23,13 @@ const Payment = () => {
             </div>
             <p className='text-lg'>Please pay <span className='text-green-500 font-bold'>${resalePrice} </span>for your order</p>
 
+            <div className='w-96 border-2 bg-black border-orange-500 rounded-lg p-6 my-6'>
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm 
+                    orders={orders}
+                    />
+                </Elements>
+            </div>
 
         </div>
     );

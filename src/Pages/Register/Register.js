@@ -37,7 +37,7 @@ const Register = () => {
 
 
     const saveUser = (name, email, userType) => {
-        const user = { name, email, userType };
+        const user = { name, email, userType }; 
         console.log(user);
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -52,7 +52,7 @@ const Register = () => {
                 toast.success('Account created Successfully');
                 navigate('/');
             })
-    }
+    };
 
 
     return (

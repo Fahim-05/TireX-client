@@ -41,12 +41,35 @@ const Login = () => {
         googleProviderLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                console.log(user.displayName);
+                saveUser(user.displayName, user.email, "Buyer")
                 toast.success('Login With  Google Successfully');
                 navigate(from, { replace: true });
             })
             .catch(error => console.error(error.message));
-    }
+    };
+
+
+    const saveUser = (name, email, userType) => {
+        const user = { name, email, userType }; 
+        console.log(user);
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('save user',data);
+                toast.success('Account created Successfully');
+                navigate('/');
+            })
+    };
+
+
+
 
     return (
         <div className='h-[800px] flex justify-center items-center '>
@@ -84,7 +107,7 @@ const Login = () => {
                 </form>
                 <p className='my-2 text-center'>New to TireX? <Link to='/register' className='text-blue-600 underline'>create an account</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-500 hover:bg-blue-500 w-full text-xl'>Login With Google</button>
+                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-700 hover:bg-blue-500 w-full text-xl'>Login With Google</button>
             </div>
         </div>
     );
