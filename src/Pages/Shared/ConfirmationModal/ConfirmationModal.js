@@ -13,11 +13,11 @@ const ConfirmationModal = ({ title, message, closeModal, modalData, successActio
                         <label
                             onClick={() => successAction(modalData)}
                             htmlFor="confirmationModal"
-                            className="btn btn-outline bg-red-600 text-white hover:text-white hover:bg-red-800 btn-sm">{successButton}</label>
+                            className="btn btn-outline border-none bg-red-600 text-white hover:text-white hover:bg-red-800 btn-sm">{successButton}</label>
 
-                        <button onClick={closeModal} className='btn btn-outline bg-green-600 text-white hover:text-white hover:bg-green-800 btn-sm'>Abort</button>
+                        <button onClick={closeModal} className='btn border-none btn-outline bg-green-600 text-white hover:text-white hover:bg-green-800 btn-sm'>Abort</button>
                     </div>
-                </div>
+                </div> 
             </div>
         </div >
     );

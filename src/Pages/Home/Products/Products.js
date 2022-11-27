@@ -13,11 +13,14 @@ const Products = () => {
             <p className='text-5xl my-10 text-center text-orange-600 font-bold uppercase'>{products[0].categoryName}</p>
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-20'>
                 {
+                    products.length !== 0 ?
                     products.map((product, index) => <ProductsCard
                         key={index}
                         product={product}
                         setBike={setBike}
                     ></ProductsCard>)
+                    :
+                    <p className='text-red-600'>No products available</p>
                 }
             </div>
             { bike && 

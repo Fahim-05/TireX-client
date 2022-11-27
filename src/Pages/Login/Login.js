@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
@@ -107,7 +108,7 @@ const Login = () => {
                 </form>
                 <p className='my-2 text-center'>New to TireX? <Link to='/register' className='text-blue-600 underline'>create an account</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-700 hover:bg-blue-500 w-full text-xl'>Login With Google</button>
+                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-700 hover:bg-blue-500 w-full text-xl'>Login With Google <FaGoogle></FaGoogle></button>
             </div>
         </div>
     );

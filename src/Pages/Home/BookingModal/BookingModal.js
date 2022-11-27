@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 const BookingModal = ({ bike, setBike }) => {
 
     const { user } = useContext(AuthContext);
-    const { bikeName, resalePrice, image } = bike;
+    const { bikeName, resalePrice, image, _id, location } = bike;
 
     const handleBooking = event => {
         event.preventDefault();
@@ -19,6 +19,7 @@ const BookingModal = ({ bike, setBike }) => {
         const date = form.date.value;
 
         const booking = {
+            productId: _id,
             userName,
             userEmail,
             bikeName,
@@ -56,7 +57,7 @@ const BookingModal = ({ bike, setBike }) => {
 
     return (
         <>
-            <input type="checkbox" id="booking-modal" className="modal-toggle" />
+            <input type="checkbox" id="booking-modal" className="modal-toggle" /> 
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
@@ -66,8 +67,8 @@ const BookingModal = ({ bike, setBike }) => {
                         <input type="email" name='userEmail' disabled value={user?.email} className="input input-bordered w-full" />
                         <input type="text" name='bikeName' disabled value={bikeName} className="input input-bordered w-full" />
                         <input type="number" name='resalePrice' disabled value={resalePrice} className="input input-bordered w-full" />
+                        <input type="text" name='meetingLocation' placeholder='enter meeting location' className="input input-bordered w-full" required />
                         <input type="number" name='phoneNumber' placeholder="phone number" className="input input-bordered w-full" required />
-                        <input type="text" name='meetingLocation' placeholder="location: examples: Dhaka, Jashore.." className="input input-bordered w-full" required />
                         <input type="date" name='date' placeholder="Type here" className="input input-bordered w-full" required />
                         <br />
                         <input className='btn btn-success text-xl text-white w-full' type="submit" value="Submit" />

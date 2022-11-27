@@ -78,7 +78,8 @@ const Register = () => {
                     </div>
 
                     <select {...register("userType", { required: true })} className='border w-full my-6 border-gray-300 p-2 rounded-lg'>
-                        <option value="Buyer" selected>Buyer</option>
+                        <option selected disabled>Select account type</option>
+                        <option value="Buyer">Buyer</option>
                         <option value="Seller">Seller</option>
                     </select>
 
