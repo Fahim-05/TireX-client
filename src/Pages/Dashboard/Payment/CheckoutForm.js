@@ -136,7 +136,7 @@ const CheckoutForm = ({ orders }) => {
                     type="submit"
                     disabled={!stripe || !clientSecret || processing}>
                     Pay
-                </button>
+                </button>  
             </form>
 
             <p className='text-red-500 mt-2 text-center'>{cardError}</p>

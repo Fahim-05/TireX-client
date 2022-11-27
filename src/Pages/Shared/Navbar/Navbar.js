@@ -57,7 +57,7 @@ const Navbar = () => {
                         <div className="w-16 rounded">
                             <img src={logo} alt='' />
                         </div>
-                        <Link className="btn btn-ghost normal-case text-4xl text-orange-600">TireX</Link>
+                        <Link to='/' className="btn btn-ghost normal-case text-4xl text-orange-600">TireX</Link>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">

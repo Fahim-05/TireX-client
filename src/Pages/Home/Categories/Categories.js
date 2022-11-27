@@ -1,17 +1,34 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Categories = () => {
 
+    const [categories, setCategories] = useState([]);
 
-    const { data:categories, isLoading, refetch } = useQuery({
-        queryKey: ['categories'],
-        queryFn: () => fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-    });
+    useEffect(() => {
+        getAllCategories();
+    }, []);
+    
+    // call API using AXIOS
+    const getAllCategories = () => {
+        axios.get('http://localhost:5000/categories')
+            .then(res => {
+                setCategories(res.data);
+                console.log(res.data)
+            })
+            .catch(error => console.error(error));
+    }
 
- 
+
+    // const { data:categories, isLoading, refetch } = useQuery({
+    //     queryKey: ['categories'],
+    //     queryFn: () => fetch('http://localhost:5000/categories')
+    //         .then(res => res.json())
+    // }); 
+
+
     return (
 
         <div className='my-32'>

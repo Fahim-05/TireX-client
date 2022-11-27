@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
@@ -6,6 +7,9 @@ import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal'
 const AllBuyers = () => {
 
     const [deteleBuyer, setDeleteBuyer] = useState(null);
+    
+
+
 
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['allbuyers'],
@@ -15,6 +19,22 @@ const AllBuyers = () => {
             return data;
         }
     });
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     const closeModal = () => {
@@ -29,12 +49,12 @@ const AllBuyers = () => {
                 authorization: `Bearer $${localStorage.getItem('accessToken')}`
             }
         })
-        .then(res=>res.json())
-        .then(data=> {
-            console.log(data);
-            toast.success('Deleted Successfully!')
-            refetch();
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Deleted Successfully!')
+                refetch();
+            })
 
     };
 

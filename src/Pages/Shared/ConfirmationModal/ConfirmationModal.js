@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ConfirmationModal = ({ title, message, closeModal, modalData, successAction, successButton }) => {
-    return (
+    return ( 
         <div>
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="confirmationModal" className="modal-toggle" />

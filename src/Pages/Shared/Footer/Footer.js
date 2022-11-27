@@ -18,7 +18,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <p>Copyright © 2022 - All right reserved by TireX Ltd.</p>
+                    <p>Copyright © 2022 - All right reserved by <span className='text-orange-500'>TireX Ltd.</span></p>
                 </div>
             </footer>
         </div>

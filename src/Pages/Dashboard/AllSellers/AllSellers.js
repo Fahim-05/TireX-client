@@ -56,6 +56,7 @@ const AllSellers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Account Type</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -65,7 +66,8 @@ const AllSellers = () => {
                                 <th>{index + 1}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
-                                <td className='text-green-500'>{seller.userType}</td>
+                                <td>{seller.userType}</td>
+                                <td><button className='btn btn-xs bg-blue-500 text-white btn-outline border-none'>Verify</button></td>
                                 <td>
                                     <label
                                         onClick={() => setDeleteSeller(seller)}
