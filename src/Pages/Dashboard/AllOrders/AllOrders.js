@@ -15,7 +15,6 @@ const AllOrders = () => {
         }
     });
 
-
     return (
         <div>
              <h1 className='text-xl text-orange-600 font-bold uppercase my-6'>All Orders</h1>

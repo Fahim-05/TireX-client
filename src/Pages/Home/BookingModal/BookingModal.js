@@ -30,7 +30,6 @@ const BookingModal = ({ bike, setBike }) => {
             image,
         }
 
-
         fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
@@ -49,10 +48,7 @@ const BookingModal = ({ bike, setBike }) => {
                     toast.error(data.message);
                 }
             })
-
-
-
-    }
+    };
 
     return (
         <>

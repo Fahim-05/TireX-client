@@ -10,8 +10,8 @@ const Categories = () => {
     useEffect(() => {
         getAllCategories();
     }, []);
-    
-    // call API using AXIOS
+
+    // --------------------------------------------call API using AXIOS-------------------------------//
     const getAllCategories = () => {
         axios.get('http://localhost:5000/categories')
             .then(res => {
@@ -21,7 +21,7 @@ const Categories = () => {
             .catch(error => console.error(error));
     }
 
-
+    // use query 
     // const { data:categories, isLoading, refetch } = useQuery({
     //     queryKey: ['categories'],
     //     queryFn: () => fetch('http://localhost:5000/categories')

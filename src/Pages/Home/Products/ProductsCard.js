@@ -19,8 +19,9 @@ const ProductsCard = ({ product, setBike }) => {
     const [isAdmin] = UseAdmin(user?.email);
     const [isBuyer] = UseBuyer(user?.email);
 
-
     const { categoryName, bikeName, resalePrice, originalPrice, image, location, yearOfUse, sellerName, sellerStatus, phoneNumber, condition, description, purchaseDate, postDate, email } = product;
+
+
     return (
 
         <div>

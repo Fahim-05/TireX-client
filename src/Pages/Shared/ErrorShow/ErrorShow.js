@@ -18,10 +18,10 @@ const ErrorShow = () => {
     }
 
     return (
-        <div>
+        <div className='flex justify-center items-center'>
             <p className='text-red-500'>Something went wrong!</p>
             <p className='text-red-500'>{error.statusText || error.message}</p>
-            <p className='text-green-500'>Please <button onClick={handleLogOut}>Logout</button> and Log back in!</p>
+            <p className='text-green-500'>Please <button onClick={handleLogOut} className='btn btn-info btn-sm'>Logout</button> and Log back in!</p>
         </div>
     );
 };

@@ -12,7 +12,6 @@ const AllSellers = () => {
     const [deteleSeller, setDeleteSeller] = useState(null);
     const [verifySeller, setVerifySeller] = useState(null);
 
-
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['allsellers'],
         queryFn: async () => {
@@ -22,12 +21,10 @@ const AllSellers = () => {
         }
     });
 
-
     const closeModal = () => {
         setDeleteSeller(null);
         setVerifySeller(null);
     };
-
 
     const handleDeleteSeller = (seller) => {
         fetch(`http://localhost:5000/sellers/${seller._id}`, {
@@ -43,8 +40,6 @@ const AllSellers = () => {
                 refetch();
             })
     };
-
-
 
     const handleVerifySeller = (seller) => {
         fetch(`http://localhost:5000/verifySeller/${seller.email}`, {
@@ -62,7 +57,6 @@ const AllSellers = () => {
                 }
             })
     };
-
 
 
     return (

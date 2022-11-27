@@ -5,7 +5,6 @@ import useTitle from '../../../hooks/UseTitle';
 
 const CheckoutForm = ({ orders }) => {
 
-
     useTitle(`Payment of ${orders.bikeName}`);
 
     const { _id, resalePrice, userEmail, userName, bikeName, phoneNumber, productId } = orders;
@@ -19,11 +18,7 @@ const CheckoutForm = ({ orders }) => {
     const stripe = useStripe();
     const elements = useElements();
 
-
-
-
     useEffect(() => {
-
         fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
             headers: {
@@ -35,7 +30,6 @@ const CheckoutForm = ({ orders }) => {
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, [resalePrice]);
-
 
 
     const handleSubmit = async (event) => {
@@ -113,9 +107,7 @@ const CheckoutForm = ({ orders }) => {
 
         }
         setProcessing(false);
-
     };
-
 
 
     return (

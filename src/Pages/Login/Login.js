@@ -19,7 +19,6 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-
     const handleLogin = data => {
         console.log(data);
         setLoginError('');
@@ -71,7 +70,6 @@ const Login = () => {
                 navigate('/');
             })
     };
-
 
 
 

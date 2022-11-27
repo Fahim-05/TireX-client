@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import useTitle from '../../../hooks/UseTitle';
@@ -23,7 +22,6 @@ const AllBuyers = () => {
         setDeleteBuyer(null);
     };
 
-
     const handleDeleteBuyer = (buyer) => {
         fetch(`http://localhost:5000/buyers/${buyer._id}`, {
             method: 'DELETE',
@@ -37,9 +35,7 @@ const AllBuyers = () => {
                 toast.success('Deleted Successfully!')
                 refetch();
             })
-
     };
-
 
     return (
         <div>
@@ -79,7 +75,6 @@ const AllBuyers = () => {
                     modalData={deteleBuyer}
                     successButton="Delete"
                 ></ConfirmationModal>
-
             }
         </div>
     );

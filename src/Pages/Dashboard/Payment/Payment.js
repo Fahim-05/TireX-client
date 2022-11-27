@@ -16,6 +16,7 @@ const Payment = () => {
     if(navigation.state === 'loading'){
         return <Loading></Loading>
     }
+    
 
     return (
         <div>
