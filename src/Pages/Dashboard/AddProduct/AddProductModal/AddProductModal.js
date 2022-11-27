@@ -1,19 +1,38 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 const AddProductModal = () => {
 
     const { user } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const handleAddProduct = data => {
 
         console.log(data);
 
-        
-        toast.success('Product Added Successfully');
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) { 
+                    toast.success('Product Added Successfully');
+                    navigate('/dashboard/myproducts');
+
+                }
+                else{
+                    toast.error(data.message);
+                }
+            })
 
     }
 
