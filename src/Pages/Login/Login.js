@@ -5,8 +5,11 @@ import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useTitle from '../../hooks/UseTitle';
 
 const Login = () => {
+
+    useTitle('Login');
 
     const { signIn, googleProviderLogin } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();

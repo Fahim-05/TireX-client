@@ -48,7 +48,6 @@ const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     }, []);
 
-
     const authInfo = {
         user,
         createUser,
@@ -57,8 +56,6 @@ const AuthProvider = ({ children }) => {
         googleProviderLogin,
         loading,
         updateUser
-
-
     }
 
     return (

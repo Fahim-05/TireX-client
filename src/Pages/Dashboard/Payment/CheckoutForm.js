@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, PaymentMethodMessagingElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hooks/UseTitle';
 
 const CheckoutForm = ({ orders }) => {
-    const { _id, resalePrice, userEmail, userName, bikeName, phoneNumber } = orders;
+
+
+    useTitle(`Payment of ${orders.bikeName}`);
+
+    const { _id, resalePrice, userEmail, userName, bikeName, phoneNumber, productId } = orders;
 
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
@@ -79,6 +84,7 @@ const CheckoutForm = ({ orders }) => {
 
             // payment information
             const payment = {
+                productId,
                 orderId: _id,
                 name: userName,
                 email: userEmail,
@@ -101,7 +107,7 @@ const CheckoutForm = ({ orders }) => {
                     if (data.insertedId) {
                         setSuccess('Your Payment is Completed!');
                         setTransactionId(paymentIntent.id);
-                        toast.success('Payment saved successfully!');
+                        toast.success('Payment saved successfully and Product Deleted from Database!');
                     }
                 })
 

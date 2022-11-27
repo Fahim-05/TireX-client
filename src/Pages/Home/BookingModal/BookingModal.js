@@ -28,7 +28,6 @@ const BookingModal = ({ bike, setBike }) => {
             meetingLocation,
             bookingDate: date,
             image,
-            status: 'booked'
         }
 
 

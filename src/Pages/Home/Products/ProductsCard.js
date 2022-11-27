@@ -3,16 +3,21 @@ import { useContext } from 'react';
 import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import UseAdmin from '../../../hooks/UseAdmin';
+import UseBuyer from '../../../hooks/UseBuyer';
 import UseSeller from '../../../hooks/UseSeller';
+import useTitle from '../../../hooks/UseTitle';
 
 
 
 
 const ProductsCard = ({ product, setBike }) => {
 
+    useTitle(`Products of ${product.categoryName}`);
+
     const { user } = useContext(AuthContext);
     const [isSeller] = UseSeller(user?.email);
     const [isAdmin] = UseAdmin(user?.email);
+    const [isBuyer] = UseBuyer(user?.email);
 
 
     const { categoryName, bikeName, resalePrice, originalPrice, image, location, yearOfUse, sellerName, sellerStatus, phoneNumber, condition, description, purchaseDate, postDate, email } = product;
@@ -60,7 +65,7 @@ const ProductsCard = ({ product, setBike }) => {
                     <p className='mb-6'>Description:<span className='text-sm text-orange-400'>{description}</span></p>
                     <div className="card-actions">
 
-                        {!isSeller || !isAdmin||
+                        {!isSeller && !isAdmin && isBuyer &&
                             <label
                                 htmlFor="booking-modal"
                                 className="btn hover:shadow-2xl text-lg bg-gradient-to-r from-orange-300 to-orange-600 text-white hover:scale-110 duration-200 border-none w-56"

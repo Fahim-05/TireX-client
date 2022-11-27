@@ -4,9 +4,12 @@ import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../hooks/UseAdmin';
 import UseBuyer from '../hooks/UseBuyer';
 import UseSeller from '../hooks/UseSeller';
+import useTitle from '../hooks/UseTitle';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+
+    useTitle('Dashboard');
 
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
@@ -20,7 +23,6 @@ const DashboardLayout = () => {
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet></Outlet>
-
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>

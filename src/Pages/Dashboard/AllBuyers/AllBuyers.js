@@ -2,14 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hooks/UseTitle';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 
 const AllBuyers = () => {
 
+    useTitle('All Buyers');
     const [deteleBuyer, setDeleteBuyer] = useState(null);
-    
-
-
 
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['allbuyers'],
@@ -19,10 +18,6 @@ const AllBuyers = () => {
             return data;
         }
     });
-
-
-
-
 
     const closeModal = () => {
         setDeleteBuyer(null);

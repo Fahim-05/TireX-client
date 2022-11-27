@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import useTitle from '../../../hooks/UseTitle';
 
 const AllOrders = () => {
 
-
+    useTitle('All Orders');
 
     const { data: allbookings = [] } = useQuery({
         queryKey: ['allbookings'],

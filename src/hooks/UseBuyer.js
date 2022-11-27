@@ -10,7 +10,7 @@ const UseBuyer = email => {
             // console.log(data)
             setIsBuyer(data.isBuyer);
             setIsBuyerLoading(false);
-        })
+        }) 
     },[email])
     return [isBuyer, isBuyerLoading];
 }

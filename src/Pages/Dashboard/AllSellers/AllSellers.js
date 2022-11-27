@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hooks/UseTitle';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import SellerVerifyModal from './SellerVerifyModal';
 
 const AllSellers = () => {
 
+    useTitle('All Sellers');
 
     const [deteleSeller, setDeleteSeller] = useState(null);
     const [verifySeller, setVerifySeller] = useState(null);
