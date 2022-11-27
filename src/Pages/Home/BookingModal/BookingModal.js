@@ -41,7 +41,7 @@ const BookingModal = ({ bike, setBike }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.acknowledged) {
+                if (data.acknowledged) { 
                     setBike(null);
                     toast.success('Item is Booked!');
                 }

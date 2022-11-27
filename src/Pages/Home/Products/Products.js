@@ -20,7 +20,7 @@ const Products = () => {
                     ></ProductsCard>)
                 }
             </div>
-            { bike &&
+            { bike && 
                 <BookingModal 
                     bike={bike}
                     setBike={setBike}
