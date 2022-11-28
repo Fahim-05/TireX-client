@@ -30,7 +30,7 @@ const Payment = () => {
             </div>
             <p className='text-lg'>Please pay <span className='text-green-500 font-bold'>${resalePrice} </span>for your order</p>
 
-            <div className='w-96 border-2 bg-black border-orange-500 rounded-lg p-6 my-6'>
+            <div className='w-96 border-2 bg-zinc-100 border-orange-500 rounded-lg p-6 my-6'>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm 
                     orders={orders}

@@ -109,7 +109,7 @@ const Login = () => {
                 </form>
                 <p className='my-2 text-center'>New to TireX? <Link to='/register' className='text-blue-600 underline'>create an account</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-700 hover:bg-blue-500 w-full text-xl'>Login With Google <FaGoogle></FaGoogle></button>
+                <button onClick={handleGoogleLogin} className='btn btn-outline bg-green-700 text-white hover:bg-blue-500 w-full text-xl'><FaGoogle className='text-orange-500'></FaGoogle>oogle Login</button>
             </div>
         </div>
     );
