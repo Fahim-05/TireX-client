@@ -8,7 +8,7 @@ const MyProducts = () => {
     useTitle('My Products');
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/products/${user?.email}`;
+    const url = `https://tirex-server.vercel.app/products/${user?.email}`;
 
     const { data: myorders = [] } = useQuery({
         queryKey: ['bookings', user?.email],

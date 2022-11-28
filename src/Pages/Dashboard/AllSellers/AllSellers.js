@@ -15,7 +15,7 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['allsellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allsellers')
+            const res = await fetch('https://tirex-server.vercel.app/allsellers')
             const data = await res.json();
             return data;
         }
@@ -27,7 +27,7 @@ const AllSellers = () => {
     };
 
     const handleDeleteSeller = (seller) => {
-        fetch(`http://localhost:5000/sellers/${seller._id}`, {
+        fetch(`https://tirex-server.vercel.app/sellers/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer $${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const AllSellers = () => {
     };
 
     const handleVerifySeller = (seller) => {
-        fetch(`http://localhost:5000/verifySeller/${seller.email}`, {
+        fetch(`https://tirex-server.vercel.app/verifySeller/${seller.email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

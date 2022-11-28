@@ -26,25 +26,25 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 w-80 bg-base-100 text-base-content ">
                         {
                             isBuyer && 
-                            <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+                            <li><Link to='/dashboard/myorders' className=' border border-orange-500'>My Orders</Link></li>
                         }
                         {
                             isSeller &&
                             <>
-                                <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
-                                <li><Link to='/dashboard/myproducts'>My Products</Link></li>
+                                <li><Link to='/dashboard/addproduct' className=' border border-orange-500'>Add Product</Link></li>
+                                <li><Link to='/dashboard/myproducts' className=' border border-orange-500'>My Products</Link></li>
                             </>
                         }
                         {
                             isAdmin &&
                             <>
-                                <li><Link to='/dashboard/allorders'>All Orders</Link></li>
-                                <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-                                <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
-                                <li><Link to=''>Reported Items</Link></li>
+                                <li><Link to='/dashboard/allorders' className=' border border-orange-500'>All Orders</Link></li>
+                                <li><Link to='/dashboard/allsellers' className=' border border-orange-500'>All Sellers</Link></li>
+                                <li><Link to='/dashboard/allbuyers' className=' border border-orange-500'>All Buyers</Link></li>
+                                <li><Link to='' className=' border border-orange-500'>Reported Items</Link></li>
                             </>
                         }
 

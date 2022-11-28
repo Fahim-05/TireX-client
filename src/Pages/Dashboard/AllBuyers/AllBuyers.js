@@ -12,7 +12,7 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['allbuyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allbuyers')
+            const res = await fetch('https://tirex-server.vercel.app/allbuyers')
             const data = await res.json();
             return data;
         }
@@ -23,7 +23,7 @@ const AllBuyers = () => {
     };
 
     const handleDeleteBuyer = (buyer) => {
-        fetch(`http://localhost:5000/buyers/${buyer._id}`, {
+        fetch(`https://tirex-server.vercel.app/buyers/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer $${localStorage.getItem('accessToken')}`

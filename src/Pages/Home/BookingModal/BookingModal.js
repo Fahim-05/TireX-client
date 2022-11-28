@@ -30,7 +30,7 @@ const BookingModal = ({ bike, setBike }) => {
             image,
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://tirex-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

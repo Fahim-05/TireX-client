@@ -13,7 +13,7 @@ const Categories = () => {
 
     // --------------------------------------------call API using AXIOS-------------------------------//
     const getAllCategories = () => {
-        axios.get('http://localhost:5000/categories')
+        axios.get('https://tirex-server.vercel.app/categories')
             .then(res => {
                 setCategories(res.data);
                 console.log(res.data)
@@ -24,7 +24,7 @@ const Categories = () => {
     // use query 
     // const { data:categories, isLoading, refetch } = useQuery({
     //     queryKey: ['categories'],
-    //     queryFn: () => fetch('http://localhost:5000/categories')
+    //     queryFn: () => fetch('https://tirex-server.vercel.app/categories')
     //         .then(res => res.json())
     // }); 
 

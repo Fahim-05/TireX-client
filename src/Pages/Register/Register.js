@@ -41,7 +41,7 @@ const Register = () => {
     const saveUser = (name, email, userType) => {
         const user = { name, email, userType }; 
         console.log(user);
-        fetch('http://localhost:5000/users', {
+        fetch('https://tirex-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

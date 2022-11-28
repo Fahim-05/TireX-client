@@ -9,7 +9,7 @@ const AllOrders = () => {
     const { data: allbookings = [] } = useQuery({
         queryKey: ['allbookings'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allbookings');
+            const res = await fetch('https://tirex-server.vercel.app/allbookings');
             const data = await res.json();
             return data;
         }
