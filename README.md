@@ -3,6 +3,10 @@ A second hand motorbike resale website.
 
 Live Website Link: https://tirex-dbd33.web.app/
 
+Admin Access information:
+    * adminEmail: \fahim45147@gmail.com\
+    * adminPassword: \123456\
+
 1. Features of this site are: 
 
     * Different type of access (buyer, seller, admin),
