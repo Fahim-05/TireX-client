@@ -1,7 +1,7 @@
 # TireX #
 A second hand motorbike resale website.
 
-Live Website Link: https
+Live Website Link: https://tirex-dbd33.web.app/
 
 1. Features of this site are: 
 
@@ -11,6 +11,7 @@ Live Website Link: https
     * User can choose account type during registration process,
     * There are different categories of data available,
     * Payment available using stripe,
+    * After successful payment the product will be deleted from database
 
 2. Functionalities:
 
